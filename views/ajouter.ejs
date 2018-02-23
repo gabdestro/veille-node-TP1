@@ -1,0 +1,53 @@
+<form action="/modifier" method="POST">
+	<table class="tableau" >
+
+	<br>
+	<br>
+	<% let noligne = 0 %><% let noligne2 = 0 %>
+
+
+
+
+	<% for(elm of adresses) {%>
+		<% if (noligne==0) {%>
+		<tr>	
+			<% for (p in elm) {%>		 
+		<td> 
+			<% if (p!="Générer personne") {%>
+				<a href="http://localhost:8081/trier-<%= p %>-<%= ordre%>">
+					<%= p %>
+				</a>	
+			<% } %>
+		</td>
+			<% if (p=="courriel") {%>
+				<td> <%- include('viderCollection') %>	<%- include('modifier') %> </td>
+			<% } %>
+		<% } %>
+
+		</tr>
+	 		<% } %>
+			
+			<% noligne++ %>
+		
+			<tr>
+				<% for(p in elm) {%>
+		 			
+				<td <% if (p!="_id") {%>contenteditable="true"<% } %>>
+		 			<%= elm[p] %>
+		 		</td>
+
+				<% } %>
+		
+				<td>
+					<a href=http://localhost:8081/detruire/<%= elm["_id"] %> > Détruire </a>
+				</td>
+			
+			</tr>
+		<% } %>
+
+	 </table>
+
+
+	
+</form>
+			
