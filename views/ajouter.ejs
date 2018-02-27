@@ -1,4 +1,4 @@
-<form action="/modifier" method="POST">
+
 	<table class="tableau" >
 
 	<br>
@@ -11,16 +11,16 @@
 	<% for(elm of adresses) {%>
 		<% if (noligne==0) {%>
 		<tr>	
-			<% for (p in elm) {%>		 
+			<% for (nomProp in elm) {%>		 
 		<td> 
-			<% if (p!="Générer personne") {%>
-				<a href="http://localhost:8081/trier-<%= p %>-<%= ordre%>">
-					<%= p %>
+			<% if (nomProp!="Générer personne") {%>
+				<a href="http://localhost:8081/trier-<%= nomProp %>-<%= ordre%>">
+					<%= nomProp %>
 				</a>	
 			<% } %>
 		</td>
-			<% if (p=="courriel") {%>
-				<td> <%- include('viderCollection') %>	<%- include('modifier') %> </td>
+			<% if (nomProp=="courriel") {%>
+				<td> <%- include('viderCollection') %>	 </td>
 			<% } %>
 		<% } %>
 
@@ -30,16 +30,18 @@
 			<% noligne++ %>
 		
 			<tr>
-				<% for(p in elm) {%>
+				<% for(nomProp in elm) {%>
 		 			
-				<td <% if (p!="_id") {%>contenteditable="true"<% } %>>
-		 			<%= elm[p] %>
+				<td <% if (nomProp!="_id") {%> contenteditable="true"<% } %>  class="<%= nomProp %>">
+		 			<%= elm[nomProp] %>
+
 		 		</td>
 
 				<% } %>
 		
 				<td>
 					<a href=http://localhost:8081/detruire/<%= elm["_id"] %> > Détruire </a>
+					<button class="modif">modifier</button>
 				</td>
 			
 			</tr>
@@ -48,6 +50,16 @@
 	 </table>
 
 
+
+<form id="formInvisible" action="/modifier" method="POST" >
+	<input type="hidden" placeholder="_id" name="_id" class="_id">
+	<input type="hidden" placeholder="nom" name="nom" class="nom">
+	<input type="hidden" placeholder="prenom"  name="prenom" class="prenom">
+	<input type="hidden" placeholder="telephone" name="telephone" class="telephone">
+	<input type="hidden" placeholder="courriel" name="courriel" class="courriel">
 	
 </form>
+
+<script type="text/javascript" src="btnModifier.js"> </script>
+
 			

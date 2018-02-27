@@ -1,9 +1,33 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto+Slab|Roboto:100,300,400,500,700,900');
-
-		td{font-family: 'Roboto',sans-serif;border: 2em solid transparent;text-align: center;}
-		a{text-decoration: none; color: aqua;    font-weight: 500;font-size: 1.4em;} 
-		tr>:first-child { background: Black; color: white;
-		}
-
-		tr:first-child { background: #3498DB; border: none;}
-
+td {
+  font-family: 'Roboto', sans-serif;
+  border: 2em solid transparent;
+  text-align: center;
+  width: 15%;
+}
+a {
+  text-decoration: none;
+  color: aqua;
+  font-weight: 500;
+  font-size: 1.4em;
+}
+tr > :first-child {
+  background: Black;
+  color: white;
+  width: 15%;
+}
+tr:first-child {
+  background: #3498DB;
+  border: none;
+}
+table,
+tbody {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+}
+tr {
+  display: flex;
+  justify-content: space-between;
+}
